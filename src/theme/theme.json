@@ -1,3 +1,7 @@
 {
-  "label": "youngla-theme"
+  "label": "youngla-theme",
+  "preview_path": "templates/page",
+  "author": {
+    "name": "Malcolm Githuka"
+  }
 }
