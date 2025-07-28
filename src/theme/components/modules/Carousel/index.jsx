@@ -75,7 +75,7 @@ export const fields = (
           image: { src: '' },
           overlayText: 'New Drop',
           textColor: '#FFFFFF',
-          textAlignment: 'center',
+          textAlignment: 'Center',
           primaryButtonText: 'SHOP NOW',
           primaryButtonLink: { url: '#' },
           primaryButtonColor: '#000000',
