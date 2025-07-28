@@ -77,7 +77,7 @@ export const fields = (
           textColor: '#FFFFFF',
           textAlignment: 'center',
           primaryButtonText: 'SHOP NOW',
-          primaryButtonLink: '#',
+          primaryButtonLink: { url: '#' },
           primaryButtonColor: '#000000',
           primaryButtonTextColor: '#FFFFFF',
         },
@@ -99,11 +99,11 @@ export const fields = (
         name="textAlignment"
         label="Text Alignment"
         default="center"
-        // choices={[
-        //   { label: 'Left', value: 'left' },
-        //   { label: 'Center', value: 'center' },
-        //   { label: 'Right', value: 'right' },
-        // ]}
+        choices={[
+          ['Left', 'left'],
+          ['Center', 'center'],
+          ['Right', 'right'],
+        ]}
       />
       <TextField
         name="primaryButtonText"
@@ -114,6 +114,7 @@ export const fields = (
         name="primaryButtonLink"
         label="Primary Button Link"
         help="URL for the primary button"
+        default={{ url: '#' }}
       />
       <ColorField
         name="primaryButtonColor"
@@ -134,11 +135,12 @@ export const fields = (
         name="secondaryButtonLink"
         label="Secondary Button Link"
         help="URL for the secondary button"
+        default={{ url: '#' }}
       />
       <ColorField
         name="secondaryButtonColor"
         label="Secondary Button Color"
-        default="transparent"
+        default="#00000000"
       />
       <ColorField
         name="secondaryButtonTextColor"
