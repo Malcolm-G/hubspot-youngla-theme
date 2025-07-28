@@ -72,7 +72,7 @@ export const fields = (
       }}
       default={[
         {
-          image: { src: '' },
+          image: { src: 'https://w.wallhaven.cc/full/xe/wallhaven-xelmjo.jpg' },
           overlayText: 'New Drop',
           textColor: '#FFFFFF',
           textAlignment: 'Center',
