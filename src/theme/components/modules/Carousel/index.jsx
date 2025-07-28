@@ -77,7 +77,13 @@ export const fields = (
           textColor: '#FFFFFF',
           textAlignment: 'Center',
           primaryButtonText: 'SHOP NOW',
-          primaryButtonLink: { url: '#' },
+          primaryButtonLink: {
+            url: {
+              content_id: null,
+              type: 'EXTERNAL',
+              href: '',
+            },
+          },
           primaryButtonColor: '#000000',
           primaryButtonTextColor: '#FFFFFF',
         },
