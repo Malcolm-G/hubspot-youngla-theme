@@ -98,12 +98,12 @@ export const fields = (
       <ChoiceField
         name="textAlignment"
         label="Text Alignment"
-        default="center"
         choices={[
           ['Left', 'left'],
           ['Center', 'center'],
           ['Right', 'right'],
         ]}
+        default="Center"
       />
       <TextField
         name="primaryButtonText"
@@ -114,7 +114,13 @@ export const fields = (
         name="primaryButtonLink"
         label="Primary Button Link"
         help="URL for the primary button"
-        default={{ url: '#' }}
+        default={{
+          url: {
+            content_id: null,
+            type: 'EXTERNAL',
+            href: '',
+          },
+        }}
       />
       <ColorField
         name="primaryButtonColor"
@@ -135,7 +141,13 @@ export const fields = (
         name="secondaryButtonLink"
         label="Secondary Button Link"
         help="URL for the secondary button"
-        default={{ url: '#' }}
+        default={{
+          url: {
+            content_id: null,
+            type: 'EXTERNAL',
+            href: '',
+          },
+        }}
       />
       <ColorField
         name="secondaryButtonColor"
