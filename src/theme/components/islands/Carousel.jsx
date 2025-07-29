@@ -67,7 +67,9 @@ function Carousel({
                 slide.image && slide.image.src
                   ? `url(${slide.image.src})`
                   : 'none',
-              transform: `translateX(${100 * (index - currentSlide)}%)`,
+              transform:
+                index === currentSlide ? 'translateX(0)' : 'translateX(100%)',
+              zIndex: index === currentSlide ? 1 : 0,
             }}
           >
             {slide.overlayText && (
