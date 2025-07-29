@@ -1,0 +1,94 @@
+/* ProductList Module Styles */
+.productListContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.productListTitle {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.productListSubtitle {
+  font-size: 16px;
+  text-align: center;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+/* Product Grid */
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 1024px) {
+  .productGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .productGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .productGrid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 24px;
+  }
+}
+
+.productGridItem {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Pagination Controls */
+.productListPagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  gap: 20px;
+}
+
+.paginationButton {
+  padding: 8px 16px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.paginationButton:hover {
+  background-color: #333;
+}
+
+.paginationButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.paginationPages {
+  font-size: 16px;
+}
+
+.currentPage {
+  font-weight: 700;
+}
