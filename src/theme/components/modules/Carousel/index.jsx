@@ -72,7 +72,9 @@ export const fields = (
       }}
       default={[
         {
-          image: { src: 'https://w.wallhaven.cc/full/xe/wallhaven-xelmjo.jpg' },
+          image: {
+            src: 'https://www.youngla.com/cdn/shop/files/7.15.25_RESTOCK_DESKTOP.jpg?v=1752866936&width=2000',
+          },
           overlayText: 'New Drop',
           textColor: '#FFFFFF',
           textAlignment: 'Center',
