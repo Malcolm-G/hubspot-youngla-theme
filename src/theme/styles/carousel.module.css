@@ -9,8 +9,8 @@ Carousel Module Styles .carouselContainer {
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: 400px;
   overflow: hidden; /* Hide adjacent slides */
+  aspect-ratio: 2.64 / 1; /* Set specific aspect ratio of 2000:757 */
 }
 
 .slide {
@@ -28,11 +28,37 @@ Carousel Module Styles .carouselContainer {
   align-items: center;
   visibility: hidden; /* Hide by default */
   opacity: 0; /* Hide by default */
+  aspect-ratio: 2.64 / 1; /* Maintain specific aspect ratio of 2000:757 */
 }
 
 .slide.active {
   visibility: visible; /* Show active slide */
   opacity: 1; /* Show active slide */
+}
+
+.slideImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the entire slide area */
+  z-index: 0;
+}
+
+/* Responsive adjustments for carousel aspect ratio */
+@media (max-width: 768px) {
+  .carousel,
+  .slide {
+    aspect-ratio: 2 / 1; /* Slightly adjusted ratio for medium screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel,
+  .slide {
+    aspect-ratio: 1.5 / 1; /* More compact ratio for mobile screens */
+  }
 }
 
 .overlayText {
@@ -41,13 +67,16 @@ Carousel Module Styles .carouselContainer {
   margin-bottom: 2rem;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   text-transform: uppercase;
+  position: relative;
+  z-index: 3;
 }
 
 .buttonContainer {
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  z-index: 2;
+  z-index: 3;
+  position: relative;
 }
 
 .button {

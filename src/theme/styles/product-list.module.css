@@ -1,9 +1,9 @@
 /* ProductList Module Styles */
 .productListContainer {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1500px; /* Increased container width for larger cards */
   margin: 0 auto;
-  padding: 20px;
+  padding: 25px 40px;
 }
 
 .productListTitle {
@@ -25,7 +25,7 @@
 .productGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 40px;
   width: 100%;
 }
 
@@ -53,6 +53,7 @@
 .productGridItem {
   width: 100%;
   max-width: 100%;
+  min-width: 0; /* Prevents grid items from overflowing */
 }
 
 /* Pagination Controls */

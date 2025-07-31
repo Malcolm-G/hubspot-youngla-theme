@@ -63,15 +63,18 @@ function Carousel({
               index === currentSlide ? styles.active : ''
             }`}
             style={{
-              backgroundImage:
-                slide.image && slide.image.src
-                  ? `url(${slide.image.src})`
-                  : 'none',
               transform:
                 index === currentSlide ? 'translateX(0)' : 'translateX(100%)',
               zIndex: index === currentSlide ? 1 : 0,
             }}
           >
+            {slide.image && slide.image.src && (
+              <img
+                src={slide.image.src}
+                className={styles.slideImage}
+                alt={slide.overlayText || 'Carousel slide'}
+              />
+            )}
             {slide.overlayText && (
               <div
                 className={styles.overlayText}
