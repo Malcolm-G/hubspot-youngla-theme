@@ -3,29 +3,31 @@
   width: 100%;
   max-width: 1500px; /* Increased container width for larger cards */
   margin: 0 auto;
-  padding: 25px 40px;
+  padding: 40px 50px;
 }
 
 .productListTitle {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .productListSubtitle {
-  font-size: 16px;
+  font-size: 15px;
   text-align: center;
   color: #666;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
+  font-weight: 400;
 }
 
 /* Product Grid */
 .productGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
+  gap: 30px;
   width: 100%;
 }
 
