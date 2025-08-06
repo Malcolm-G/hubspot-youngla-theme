@@ -52,9 +52,9 @@ function ProductCard({
         {selectedImage && (
           <div className={styles.productImage}>
             <img
-              src={selectedImage.url}
+              src={selectedImage.image.url}
               alt={`${product.name} - ${
-                selectedVariant ? selectedVariant.color_name : ''
+                selectedVariant ? selectedVariant.color : ''
               }`}
             />
           </div>
@@ -83,8 +83,8 @@ function ProductCard({
             ) : (
               <div
                 className={styles.colorSwatch}
-                style={{ backgroundColor: variant.color_value }}
-                title={variant.color_name}
+                style={{ backgroundColor: variant.color }}
+                title={variant.color}
               />
             )}
 

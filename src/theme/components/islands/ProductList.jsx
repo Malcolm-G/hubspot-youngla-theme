@@ -34,13 +34,18 @@ function ProductList({
         setLoading(true);
 
         // Fetch products from HubDB v3 API
-        const productsUrl = `/cms/v3/hubdb/tables/${tableName}/rows?sort=${
+        const productsUrl = `https://api.hubapi.com/cms/v3/hubdb/tables/${tableName}/rows?sort=${
           sortDirection === 'DESC' ? '-' : ''
         }${sortBy}&after=${
           (currentPage - 1) * productsPerPage
-        }&limit=${productsPerPage}`;
+        }&limit=${productsPerPage}&portalId=47574277`;
         console.log('[ProductList] Fetching products:', productsUrl);
         const productsResponse = await fetch(productsUrl);
+        if (!productsResponse.ok) {
+          throw new Error(
+            `Failed to fetch products: ${productsResponse.status}`,
+          );
+        }
         const productsData = await productsResponse.json();
         console.log('[ProductList] Products response:', productsData);
 
@@ -67,7 +72,7 @@ function ProductList({
         // Fetch variants if variantsTableName is provided
         if (variantsTableName) {
           const productIds = formattedProducts.map((p) => p.id).join(',');
-          const variantsUrl = `/cms/v3/hubdb/tables/${variantsTableName}/rows?in (${productIds})`;
+          const variantsUrl = `https://api.hubapi.com/cms/v3/hubdb/tables/${variantsTableName}/rows?product__in=${productIds}&portalId=47574277`;
           console.log('[ProductList] Fetching variants:', variantsUrl);
           const variantsResponse = await fetch(variantsUrl);
           const variantsData = await variantsResponse.json();
@@ -77,17 +82,21 @@ function ProductList({
           const variants = {};
           if (variantsData.results) {
             variantsData.results.forEach((variant) => {
-              const productId = variant.values.product.toString();
-              if (!variants[productId]) variants[productId] = [];
-
-              variants[productId].push({
-                id: variant.id.toString(),
-                name: variant.values.name,
-                swatch_image: variant.values.swatch_image,
-                in_stock: variant.values.in_stock,
-                color: variant.values.color,
-                representative_image: variant.values.representative_image,
-              });
+              // product is an array of objects with id and name
+              if (Array.isArray(variant.values.product)) {
+                variant.values.product.forEach((productRef) => {
+                  const productId = productRef.id.toString();
+                  if (!variants[productId]) variants[productId] = [];
+                  variants[productId].push({
+                    id: variant.id.toString(),
+                    name: variant.values.name,
+                    swatch_image: variant.values.swatch_image,
+                    in_stock: variant.values.in_stock,
+                    color: variant.values.color,
+                    representative_image: variant.values.representative_image,
+                  });
+                });
+              }
             });
           }
           console.log('[ProductList] Formatted variants:', variants);
@@ -97,7 +106,7 @@ function ProductList({
           // Fetch images if imagesTableName is provided
           if (imagesTableName && variantsData.results) {
             const productIds = formattedProducts.map((p) => p.id).join(',');
-            const imagesUrl = `/cms/v3/hubdb/tables/${imagesTableName}/rows?where=product IN (${productIds})`;
+            const imagesUrl = `https://api.hubapi.com/cms/v3/hubdb/tables/${imagesTableName}/rows?product__in=${productIds}&portalId=47574277`;
             console.log('[ProductList] Fetching images:', imagesUrl);
             const imagesResponse = await fetch(imagesUrl);
             const imagesData = await imagesResponse.json();
@@ -107,14 +116,18 @@ function ProductList({
             const images = {};
             if (imagesData.results) {
               imagesData.results.forEach((image) => {
-                const productId = image.values.product.toString();
-                if (!images[productId]) images[productId] = [];
-
-                images[productId].push({
-                  id: image.id.toString(),
-                  name: image.values.name,
-                  image: image.values.image,
-                });
+                // product is an array of objects with id and name
+                if (Array.isArray(image.values.product)) {
+                  image.values.product.forEach((productRef) => {
+                    const productId = productRef.id.toString();
+                    if (!images[productId]) images[productId] = [];
+                    images[productId].push({
+                      id: image.id.toString(),
+                      name: image.values.name,
+                      image: image.values.image,
+                    });
+                  });
+                }
               });
             }
             console.log('[ProductList] Formatted images:', images);
