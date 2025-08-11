@@ -169,10 +169,6 @@ function ProductList({
 
   return (
     <div className={styles.productListContainer}>
-      {/* Module Header */}
-      {title && <h2 className={styles.productListTitle}>{title}</h2>}
-      {subtitle && <p className={styles.productListSubtitle}>{subtitle}</p>}
-
       {/* Product Grid */}
       <div className={styles.productGrid}>
         {products.map((product) => (

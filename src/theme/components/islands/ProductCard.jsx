@@ -21,19 +21,27 @@ function ProductCard({
     productVariants.length > 0 ? productVariants[0].id : null,
   );
 
+  console.log(productImages);
+
   // Find the currently selected variant
   const selectedVariant = productVariants.find(
     (variant) => variant.id === selectedVariantId,
   );
+  console.log('Selected Variant:', selectedVariant);
+
+  console.log('Product Images:', productImages);
 
   // Find the representative image for the selected variant
   const selectedImage = selectedVariant
     ? productImages.find(
-        (image) => image.id === selectedVariant.representative_image_id,
+        (image) => image.id === selectedVariant.representative_image[0].id,
       )
     : productImages.length > 0
     ? productImages[0]
     : null;
+
+  console.log(productImages[0]);
+  console.log('Selected Image:', selectedImage);
 
   // Handle color/variant selection
   const handleVariantSelect = (variantId) => {
@@ -83,7 +91,7 @@ function ProductCard({
             ) : (
               <div
                 className={styles.colorSwatch}
-                style={{ backgroundColor: variant.color }}
+                style={{ backgroundColor: variant.color.name }}
                 title={variant.color}
               />
             )}
