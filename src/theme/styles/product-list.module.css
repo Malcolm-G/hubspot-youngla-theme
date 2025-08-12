@@ -1,9 +1,17 @@
 /* ProductList Module Styles */
+
+/* Reset and normalization for product list */
+.productListContainer * {
+  box-sizing: border-box;
+}
+
 .productListContainer {
   width: 100%;
-  max-width: 1500px; /* Increased container width for larger cards */
+  max-width: 1400px; /* Optimized container width */
   margin: 0 auto;
-  padding: 40px 50px;
+  padding: 30px 15px; /* Better padding for all screen sizes */
+  box-sizing: border-box; /* Ensure padding is included in width calculation */
+  overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 .productListTitle {
@@ -27,28 +35,56 @@
 .productGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
+  gap: 15px; /* Optimized gap for better fit */
   width: 100%;
+  box-sizing: border-box; /* Ensure proper box sizing */
+  margin: 0; /* Remove any default margin */
 }
 
 /* Responsive grid adjustments */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
+  .productListContainer {
+    padding: 25px 12px; /* Optimized padding */
+  }
   .productGrid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
   }
 }
 
 @media (max-width: 768px) {
+  .productListContainer {
+    padding: 20px 8px; /* Minimal padding on mobile */
+  }
   .productGrid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 8px; /* Smaller gap on mobile */
   }
 }
 
 @media (max-width: 480px) {
+  .productListContainer {
+    padding: 15px 6px; /* Very minimal padding on small mobile */
+  }
   .productGrid {
-    grid-template-columns: repeat(1, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* Keep 2 columns even on very small screens */
+    gap: 6px; /* Very small gap on small mobile */
+  }
+}
+
+@media (max-width: 360px) {
+  .productListContainer {
+    padding: 12px 4px; /* Minimal padding for very small screens */
+  }
+  .productGrid {
+    grid-template-columns: repeat(
+      1,
+      1fr
+    ); /* Single column only on very small screens */
+    gap: 12px;
   }
 }
 
@@ -56,6 +92,8 @@
   width: 100%;
   max-width: 100%;
   min-width: 0; /* Prevents grid items from overflowing */
+  box-sizing: border-box; /* Ensure proper box sizing */
+  overflow: hidden; /* Prevent any content overflow */
 }
 
 /* Pagination Controls */
