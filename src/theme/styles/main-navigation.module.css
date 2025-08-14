@@ -3,6 +3,11 @@
   flex-direction: column;
   background-color: #fff;
   border-bottom: 1px solid #e1e1e1;
+  position: fixed;
+  top: 30px; /* Reduced gap - position directly below topbar */
+  left: 0;
+  width: 100%;
+  z-index: 999;
 }
 
 .topRow {

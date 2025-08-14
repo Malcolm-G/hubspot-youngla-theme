@@ -3,6 +3,15 @@
   color: #fff;
   padding: 8px 0;
   width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Add padding to body to account for fixed topbar and main navigation */
+body {
+  padding-top: 120px; /* Reduced to match the smaller gap */
 }
 
 .container {
