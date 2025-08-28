@@ -10,7 +10,7 @@ let cache = {
 
 exports.main = async (context) => {
   try {
-    const YOUNGLA_URL = process.env.YOUNGLA_URL || 'https://youngla.com';
+    const YOUNGLA_URL = 'https://youngla.com';
 
     // Check cache first
     const now = Date.now();

@@ -2,7 +2,7 @@
   "appFunctions": {
     "instagram-fetch-function": {
       "file": "function.js",
-      "secrets": ["YOUNGLA_URL"],
+      "secrets": [],
       "endpoint": {
         "path": "instagram-fetch",
         "method": ["GET"]
