@@ -151,6 +151,12 @@ function ProductCard({
         )}
       </div>
 
+      {/* Product Information */}
+      <div className={styles.productInfo}>
+        <h3 className={styles.productName}>{product.name}</h3>
+        <div className={styles.productPrice}>${product.price.toFixed(2)}</div>
+      </div>
+
       {/* Color/Variant Selection */}
       <div className={styles.variantSelectionContainer}>
         {productVariants.map((variant) => (
@@ -184,38 +190,32 @@ function ProductCard({
         ))}
       </div>
 
-      {/* Product Information */}
-      <div className={styles.productInfo}>
-        <h3 className={styles.productName}>{product.name}</h3>
-        <div className={styles.productPrice}>${product.price.toFixed(2)}</div>
-
-        {/* Rating display */}
-        <div className={styles.ratingContainer}>
-          {product.rating && (
-            <>
-              <div className={styles.stars}>
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <span
-                    key={star}
-                    className={`
-                      ${styles.star} 
-                      ${
-                        star <= Math.round(product.rating)
-                          ? styles.filledStar
-                          : ''
-                      }
-                    `}
-                  >
-                    ★
-                  </span>
-                ))}
-              </div>
-              <span className={styles.reviewCount}>
-                ({product.review_count || 0})
-              </span>
-            </>
-          )}
-        </div>
+      {/* Rating display */}
+      <div className={styles.ratingContainer}>
+        {product.rating && (
+          <>
+            <div className={styles.stars}>
+              {[1, 2, 3, 4, 5].map((star) => (
+                <span
+                  key={star}
+                  className={`
+                    ${styles.star} 
+                    ${
+                      star <= Math.round(product.rating)
+                        ? styles.filledStar
+                        : ''
+                    }
+                  `}
+                >
+                  ★
+                </span>
+              ))}
+            </div>
+            <span className={styles.reviewCount}>
+              ({product.review_count || 0})
+            </span>
+          </>
+        )}
       </div>
     </div>
   );
