@@ -3,5 +3,6 @@
   "preview_path": "templates/page",
   "author": {
     "name": "Malcolm Githuka"
-  }
+  },
+  "secretNames": ["HUBSPOT_TOKEN"]
 }
