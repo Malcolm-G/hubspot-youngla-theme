@@ -1,0 +1,7 @@
+{
+  "name": "YoungLA Instagram Fetcher",
+  "description": "This app runs a serverless function to fetch instagram photos from YoungLA's page",
+  "scopes": ["crm.objects.contacts.read", "crm.objects.contacts.write"],
+  "uid": "youngla-instagram-fetcher",
+  "public": true
+}
