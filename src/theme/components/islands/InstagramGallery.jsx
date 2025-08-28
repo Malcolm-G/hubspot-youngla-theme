@@ -7,6 +7,7 @@ function InstagramGallery({
   serverlessEndpoint = '/hs/serverless/instagram-fetch',
   showTitle = true,
   maxImages = 12,
+  hubspotToken, // Token passed from the module
 }) {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -28,6 +29,7 @@ function InstagramGallery({
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
+            ...(hubspotToken && { Authorization: `Bearer ${hubspotToken}` }),
           },
         });
 

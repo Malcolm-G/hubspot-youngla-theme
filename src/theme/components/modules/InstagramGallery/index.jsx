@@ -1,4 +1,5 @@
 import { Island } from '@hubspot/cms-components';
+import { getSecret } from '@hubspot/cms-components';
 import {
   ModuleFields,
   TextField,
@@ -17,10 +18,15 @@ import Layout from '../../Layout.jsx';
 
 export const Component = ({ fieldValues, hublParameters = {} }) => {
   console.log('Instagram Gallery fieldValues:', fieldValues);
+
+  // Get the HubSpot token from secrets (server-side only)
+  const hubspotToken = getSecret('HUBSPOT_TOKEN');
+
   const flatValues = {
     ...fieldValues.contentGroup,
     ...fieldValues.configGroup,
     ...fieldValues.displayGroup,
+    hubspotToken, // Pass the token to the island
   };
   return (
     <Layout>

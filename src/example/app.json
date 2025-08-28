@@ -1,7 +1,7 @@
 {
   "name": "YoungLA Instagram Fetcher",
   "description": "This app runs a serverless function to fetch instagram photos from YoungLA's page",
-  "scopes": [],
+  "scopes": ["cms.domains.read", "cms.functions.read"],
   "uid": "youngla-instagram-fetcher",
   "public": false
 }
