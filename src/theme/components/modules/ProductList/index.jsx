@@ -8,10 +8,8 @@ import {
   ChoiceField,
   LabelField,
 } from '@hubspot/cms-components/fields';
-import ProductCard from '../../islands/ProductCard.jsx?island';
 import ProductList from '../../islands/ProductList.jsx?island';
 import Layout from '../../Layout.jsx';
-import styles from '../../../styles/product-list.module.css';
 
 /**
  * This module displays a list of product cards that can be filtered by category.
