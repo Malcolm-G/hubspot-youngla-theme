@@ -162,10 +162,27 @@ function Carousel({
           <button
             className={styles.scrollDownArrow}
             onClick={() => {
-              const nextSection = document.querySelector('.content-wrapper');
+              // First try to find the product section by ID
+              const productSection = document.querySelector('#product-section');
+              if (productSection) {
+                productSection.scrollIntoView({ behavior: 'smooth' });
+                return;
+              }
+
+              // Fallback: try to find any section after carousel
+              const nextSection = document.querySelector(
+                '.body-wrapper > div:nth-child(2)',
+              );
               if (nextSection) {
                 nextSection.scrollIntoView({ behavior: 'smooth' });
+                return;
               }
+
+              // Last fallback: scroll down by viewport height
+              window.scrollBy({
+                top: window.innerHeight,
+                behavior: 'smooth',
+              });
             }}
             aria-label="Scroll to next section"
           >
