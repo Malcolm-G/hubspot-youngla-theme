@@ -40,7 +40,11 @@ export const fields = (
       <UrlField
         name="instagramUrl"
         label="Instagram Profile URL"
-        default="https://instagram.com/youngla"
+        default={{
+          content_id: null,
+          href: 'https://instagram.com/youngla',
+          type: 'EXTERNAL',
+        }}
       />
       <BooleanField name="showTitle" label="Show Title" default={true} />
     </FieldGroup>
