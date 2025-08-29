@@ -30,10 +30,10 @@ exports.main = async (context, sendResponse) => {
 
   const images = await Promise.all(requests);
 
-  sendResponse({
+  return {
     statusCode: 200,
     body: {
       images: images.filter(Boolean), // filter out any failed requests
     },
-  });
+  };
 };
