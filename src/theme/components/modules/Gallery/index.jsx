@@ -36,7 +36,7 @@ export const fields = (
       <TextField
         name="title"
         label="Gallery Title"
-        default="Random Image Gallery"
+        default="YoungLA Gallery (Serverless function that pulls in random images)"
       />
       <BooleanField name="showTitle" label="Show Title" default={true} />
     </FieldGroup>

@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import styles from '../../styles/gallery.module.css';
 
 function Gallery({
-  title = 'Random Image Gallery',
-  serverlessEndpoint = '/hs/serverless/gallery-fetch',
+  title = 'YoungLA Gallery (Serverless function that pulls in random images)',
+  serverlessEndpoint = '/hs/serverless/instagram-fetch',
   showTitle = true,
   maxImages = 12,
   hubspotToken,
@@ -11,7 +11,6 @@ function Gallery({
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [cached, setCached] = useState(false);
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -28,9 +27,9 @@ function Gallery({
           throw new Error(`Failed to fetch images: ${response.status}`);
         }
         const data = await response.json();
+        console.log('[Gallery] Fetched data:', data);
         if (data.images) {
           setImages(maxImages ? data.images.slice(0, maxImages) : data.images);
-          setCached(data.cached || false);
         } else {
           throw new Error(data.error || 'Failed to load images');
         }
@@ -97,29 +96,19 @@ function Gallery({
       {showTitle && (
         <div className={styles.header}>
           <h2 className={styles.title}>{title}</h2>
-          {cached && (
-            <div className={styles.cacheIndicator}>
-              <span>Cached</span>
-            </div>
-          )}
         </div>
       )}
       <div className={styles.galleryGrid}>
-        {images.map((image) => (
-          <div key={image.id} className={styles.imageItem}>
+        {images.map((imageUrl) => (
+          <div key={imageUrl} className={styles.imageItem}>
             <div className={styles.imageWrapper}>
               <img
-                src={image.imageUrl}
-                alt={image.caption || 'Random image'}
+                src={imageUrl}
+                alt="Random image"
                 className={styles.image}
                 loading="lazy"
               />
             </div>
-            {image.caption && (
-              <div className={styles.caption}>
-                {image.caption.length > 100 ? `${image.caption.substring(0, 100)}...` : image.caption}
-              </div>
-            )}
           </div>
         ))}
       </div>
