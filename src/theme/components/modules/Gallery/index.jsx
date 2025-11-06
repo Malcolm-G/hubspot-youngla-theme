@@ -16,12 +16,11 @@ import Layout from '../../Layout.jsx';
 
 export const Component = ({ fieldValues, hublParameters = {} }) => {
   // Get the HubSpot token from secrets (server-side only)
-  const hubspotToken = getSecret('HUBSPOT_TOKEN');
+  // const hubspotToken = getSecret('HUBSPOT_TOKEN');
   const flatValues = {
     ...fieldValues.contentGroup,
     ...fieldValues.configGroup,
     ...fieldValues.displayGroup,
-    hubspotToken,
   };
   return (
     <Layout>
