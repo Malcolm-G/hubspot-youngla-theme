@@ -5,16 +5,16 @@ exports.main = async (context, sendResponse) => {
   const urls = [
     `${baseUrl}`,
     `${baseUrl}?grayscale`,
-    `${baseUrl}?blur`,
-    `${baseUrl}?grayscale&blur`,
+    `${baseUrl}`,
+    `${baseUrl}?grayscale&random=1`,
     `${baseUrl}?random=1`,
     `${baseUrl}?grayscale&random=2`,
     `${baseUrl}?blur&random=3`,
-    `${baseUrl}?grayscale&blur&random=4`,
+    `${baseUrl}?grayscale&random=4`,
     `${baseUrl}?random=5`,
     `${baseUrl}?grayscale&random=6`,
     `${baseUrl}?blur&random=7`,
-    `${baseUrl}?grayscale&blur&random=8`,
+    `${baseUrl}?grayscale&random=8`,
   ];
 
   // Make requests and follow redirects to get final image URLs
